@@ -25,6 +25,7 @@
                             <th>Type</th>
                             <th>Cast</th>
                             <th>Picture</th>
+                            <th>Status</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -35,6 +36,7 @@
                             <th>Type</th>
                             <th>Cast</th>
                             <th>Picture</th>
+							<th>Status</th>
                             <th>Action</th>
                           </tr>
                         </tfoot>
@@ -45,6 +47,14 @@
                             <td>{{ $student->gender }}</td>
                             <td>{{ $student->orphan_type }}</td>
                             <td>{{ $student->cast }}</td>
+							@php
+								if($student->student_status == 1){
+									$status = "Active";
+								}else{
+									$status = "Inactive";
+								}
+							@endphp
+                            <td>{{ $status }}</td>
 							<td><img src="{{ url('/thumbnail/') }}/{{ $student->orphan_profile_picture }}" width="45px;" height="45px;"></td>
                             <td><a href="{{ url('admin/orphan/student/edit') }}/{{ $student->id }}" title="Edit"><i class="fa fa-eye" aria-hidden="true"></i></a> |
                             	<a href="{{ url('admin/orphan/student/delete') }}/{{ $student->id }}" title="Remove" onclick="return confirm('you want to delete?');"><i class="fa fa-trash" aria-hidden="true"></i></a>

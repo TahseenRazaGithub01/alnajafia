@@ -31,7 +31,7 @@ class OrphanStudentController extends Controller
      */
     public function show(OrphanStudent $orphanStudent)
     {
-        $orphanStudent = OrphanStudent::select('id','name_en','gender','orphan_type','cast','orphan_profile_picture')->get();
+        $orphanStudent = OrphanStudent::select('id','name_en','gender','orphan_type','cast','orphan_profile_picture','student_status')->get();
         return view('admin.orphanStudent.listing', compact('orphanStudent'));
     }
 
@@ -43,6 +43,19 @@ class OrphanStudentController extends Controller
      */
     public function store(OrphanStudentRequest $request)
     {
+
+        if(isset($request['student_status'])){
+
+            if($request['student_status'] == "on"){
+
+                $request['student_status'] = 1 ;
+
+            }
+
+        }else{
+
+            $request['student_status'] = 0 ;
+        } 
 
         if(isset($request['gender'])){
             if($request['gender'] == "male"){
@@ -93,6 +106,7 @@ class OrphanStudentController extends Controller
         $orphanStudent->city = $request->city;
         $orphanStudent->mother_name = $request->mother_name;
         $orphanStudent->orphan_profile_picture = $orphan_profile_picture;
+        $orphanStudent->student_status = $request->student_status;
         
         $orphanStudent->save();
 
@@ -137,6 +151,19 @@ class OrphanStudentController extends Controller
 
         }
 
+        if(isset($request['student_status'])){
+
+            if($request['student_status'] == "on"){
+
+                $request['student_status'] = 1 ;
+
+            }
+
+        }else{
+
+            $request['student_status'] = 0 ;
+        }
+
         if(isset($request['gender'])){
             if($request['gender'] == "male"){
                 $gender = "male";
@@ -176,6 +203,7 @@ class OrphanStudentController extends Controller
             'orphan_profile_id'                 => $request['orp_profile_id'],
             'city'                              => $request['city'],
             'mother_name'                       => $request['mother_name'],
+            'student_status'                    => $request['student_status'],
         );
         
         $OrphanStudent->update($data);

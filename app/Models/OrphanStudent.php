@@ -15,6 +15,7 @@ class OrphanStudent extends Model
     	'orphan_profile_id',
     	'city',
     	'mother_name',
-    	'orphan_profile_picture'
+    	'orphan_profile_picture',
+        'student_status'
     ];
 }
