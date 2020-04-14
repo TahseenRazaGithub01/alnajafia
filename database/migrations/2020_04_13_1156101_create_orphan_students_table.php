@@ -24,6 +24,7 @@ class CreateOrphanStudentsTable extends Migration
 			$table->string('city')->nullable();
 			$table->string('mother_name')->nullable();
 			$table->string('orphan_profile_picture')->nullable();
+			$table->boolean('student_status')->default(1);
             $table->timestamps();
         });
     }
