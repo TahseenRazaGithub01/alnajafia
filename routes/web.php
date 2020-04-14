@@ -42,6 +42,14 @@ Route::get('admin/orphan/delete/{id}', 'Admin\OrphanCategoryController@destroy')
 Route::get('admin/orphan/edit/{id}', 'Admin\OrphanCategoryController@edit')->name('admin.orphan.edit')->middleware('is_admin');
 Route::post('admin/orphan/update', 'Admin\OrphanCategoryController@update')->name('admin.orphan.update')->middleware('is_admin');
 
+/*************************** Orphan Student ***************************/
+Route::get('admin/orphan/student', 'Admin\OrphanStudentController@index')->name('admin.orphan.student')->middleware('is_admin');
+Route::post('admin/orphan/student/store', 'Admin\OrphanStudentController@store')->name('admin.orphan.student.store')->middleware('is_admin');
+Route::get('admin/orphan/student/listing', 'Admin\OrphanStudentController@show')->name('admin.orphan.student.listing')->middleware('is_admin');
+Route::get('admin/orphan/student/delete/{id}', 'Admin\OrphanStudentController@destroy')->name('admin.orphan.student.destroy')->middleware('is_admin');
+Route::get('admin/orphan/student/edit/{id}', 'Admin\OrphanStudentController@edit')->name('admin.orphan.student.edit')->middleware('is_admin');
+Route::post('admin/orphan/student/update', 'Admin\OrphanStudentController@update')->name('admin.orphan.student.update')->middleware('is_admin');
+
 /*************************** Story ***************************/
 Route::get('admin/secratory_general', 'Admin\SecratoryGeneralController@index')->name('admin.secratory_general')->middleware('is_admin');
 Route::post('admin/secratory_general/store', 'Admin\SecratoryGeneralController@store')->name('admin.secratory_general.store')->middleware('is_admin');

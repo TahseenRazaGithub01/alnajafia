@@ -178,6 +178,9 @@
                   <a href="{{ route('admin.orphan') }}">
                     <span>Category</span>
                   </a>
+				          <a href="{{ route('admin.orphan.student') }}">
+                    <span>Student List</span>
+                  </a>
                 </li>
                 <li class="nav-item dropdown">
                   <a href="javascript:void(0);">
