@@ -42,6 +42,12 @@ Route::get('admin/orphan/delete/{id}', 'Admin\OrphanCategoryController@destroy')
 Route::get('admin/orphan/edit/{id}', 'Admin\OrphanCategoryController@edit')->name('admin.orphan.edit')->middleware('is_admin');
 Route::post('admin/orphan/update', 'Admin\OrphanCategoryController@update')->name('admin.orphan.update')->middleware('is_admin');
 
+/*************************** Orphan Basic Care ***************************/
+Route::get('admin/basic_care', 'Admin\OrphanDetailController@index')->name('admin.basic_care')->middleware('is_admin');
+Route::post('admin/basic_care/store', 'Admin\OrphanDetailController@store')->name('admin.basic_care.store')->middleware('is_admin');
+Route::get('admin/basic_care/listing', 'Admin\OrphanDetailController@show')->name('admin.basic_care.listing')->middleware('is_admin');
+Route::get('admin/basic_care/delete/{id}', 'Admin\OrphanDetailController@destroy')->name('admin.basic_care.destroy')->middleware('is_admin');
+
 /*************************** Orphan Student ***************************/
 Route::get('admin/orphan/student', 'Admin\OrphanStudentController@index')->name('admin.orphan.student')->middleware('is_admin');
 Route::post('admin/orphan/student/store', 'Admin\OrphanStudentController@store')->name('admin.orphan.student.store')->middleware('is_admin');

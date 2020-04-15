@@ -191,7 +191,7 @@
                   </a>
                   <ul class="dropdown-menu">
                     <li>
-                      <a href="javascript:void(0);">Basic Care</a>
+                      <a href="{{ route('admin.basic_care') }}">Basic Care</a>
                     </li>
                     <li>
                       <a href="javascript:void(0);">Dar al Zehra</a>
