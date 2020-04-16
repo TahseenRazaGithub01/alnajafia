@@ -47,6 +47,8 @@ Route::get('admin/basic_care', 'Admin\OrphanDetailController@index')->name('admi
 Route::post('admin/basic_care/store', 'Admin\OrphanDetailController@store')->name('admin.basic_care.store')->middleware('is_admin');
 Route::get('admin/basic_care/listing', 'Admin\OrphanDetailController@show')->name('admin.basic_care.listing')->middleware('is_admin');
 Route::get('admin/basic_care/delete/{id}', 'Admin\OrphanDetailController@destroy')->name('admin.basic_care.destroy')->middleware('is_admin');
+Route::get('admin/basic_care/edit/{id}', 'Admin\OrphanDetailController@edit')->name('admin.basic_care.edit')->middleware('is_admin');
+Route::post('admin/basic_care/update', 'Admin\OrphanDetailController@update')->name('admin.basic_care.update')->middleware('is_admin');
 
 /*************************** Orphan Student ***************************/
 Route::get('admin/orphan/student', 'Admin\OrphanStudentController@index')->name('admin.orphan.student')->middleware('is_admin');

@@ -66,8 +66,13 @@
                         </div>
 						
 						<div class="form-group">
-                          <input type="text" required="required" class='form-control' name="category_id" placeholder="category_id 1">
-                        </div>
+							<label for="inputState">Category</label>
+							<select id="inputState" name="category_id" class="form-control">
+								@foreach($categories as $id => $category)
+									<option value="{{ $id }}">{{ $category }}</option>
+								@endforeach
+							</select>
+						</div>
                         
                         
                       </div>

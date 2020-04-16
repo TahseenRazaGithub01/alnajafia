@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\OrphanDetail;
+use App\Models\OrphanCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-//use App\Http\Requests\OrphanCategoryRequest;
-//use App\Http\Requests\OrphanCategoryUpdateRequest;
+use App\Http\Requests\OrphanDetailRequest;
+use App\Http\Requests\OrphanDetailUpdateRequest;
 use Illuminate\Support\Str;
 use Image;
 use App\Helpers\helper as Helper;
@@ -20,7 +21,8 @@ class OrphanDetailController extends Controller
      */
     public function index()
     {
-        return view('admin.orphanDetail.index');
+        $categories = OrphanCategory::all()->pluck('category_name_en', 'id');
+        return view('admin.orphanDetail.index', compact('categories'));
     }
 
     /**
@@ -41,10 +43,10 @@ class OrphanDetailController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OrphanDetailRequest $request)
     {
         $orphanDetail = OrphanDetail::create($request->all());
-        $orphanDetail->category()->sync($request->input('category_id'));
+        $orphanDetail->category()->attach($request->input('category_id'));
 
         return back()->with('success', 'Record has been added successfully.');
     }
@@ -55,9 +57,17 @@ class OrphanDetailController extends Controller
      * @param  \App\OrphanDetail  $orphanDetail
      * @return \Illuminate\Http\Response
      */
-    public function edit(OrphanDetail $orphanDetail)
+    public function edit(OrphanDetail $orphanDetail, $id)
     {
-        //
+        $record = $orphanDetail::with('category')->whereId($id)->first();
+
+        $categories = OrphanCategory::all()->pluck('category_name_en', 'id');
+
+        if($record != false){
+            return view('admin.orphanDetail.edit', compact('record','categories'));
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -67,9 +77,14 @@ class OrphanDetailController extends Controller
      * @param  \App\OrphanDetail  $orphanDetail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OrphanDetail $orphanDetail)
+    public function update(OrphanDetailUpdateRequest $request, OrphanDetail $orphanDetail)
     {
-        //
+        $orphanDetail = orphanDetail::find($request['id']);
+
+        $orphanDetail->update($request->all());
+        $orphanDetail->category()->sync($request->input('category_id'));
+
+        return redirect(route('admin.basic_care.listing'))->with('success', 'Record has been updated successfully.');
     }
 
     /**
@@ -81,6 +96,7 @@ class OrphanDetailController extends Controller
     public function destroy(OrphanDetail $orphanDetail)
     {
         $detail = OrphanDetail::findOrFail(request()->id);
+
         $detail->category()->detach();
         $detail->delete();
         return back()->with('success', 'Record has been deleted successfully.');

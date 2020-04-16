@@ -9,7 +9,7 @@
               <div class="email-side-nav remain-height ov-h">
                 <div class="h-100 layers">
                   <div class="p-20 bgc-grey-100 layer w-100">
-                    <a href="{{ route('admin.orphan.listing') }}" class="btn btn-danger btn-block">View Orphan Category</a>
+                    <a href="{{ route('admin.basic_care.listing') }}" class="btn btn-danger btn-block">View Basic Care</a>
                   </div>
                   <div class="scrollable pos-r bdT layer w-100 fxg-1">
                     <ul class="p-20 nav flex-column">
@@ -57,30 +57,34 @@
                         <i class="ti-menu"></i>
                       </a>
                     </div>
-                    <form method="post" action="{{ route('admin.orphan.update') }}" enctype="multipart/form-data" class="email-compose-body">
+                    <form method="post" action="{{ route('admin.basic_care.update') }}" enctype="multipart/form-data" class="email-compose-body">
                       @csrf
                       
                       <input type="hidden" name="id" value="{{ $record->id }}">
-                      <h4 class="c-grey-900 mB-20">Update Orphan Category</h4>
+                      <h4 class="c-grey-900 mB-20">Update Basic Care</h4>
                       <div class="send-header">
                         <div class="form-group">
-                          <input type="text" required="required" class='form-control' name="name" value="{{ $record->category_name_en }}" placeholder="Name">
+                          <input type="text" required="required" class='form-control' name="detail_name_en" value="{{ $record->detail_name_en }}" placeholder="Name">
                         </div>
-                        <div class="form-group">
-                          <input type="file" class="form-control" id="banner_image" name="banner_image"
-                            aria-describedby="inputGroupFileAddon01">
-                          <label class="custom-file-label" for="inputGroupFile01">Upload Banner Image</label>
-                        </div>
-
-                        <div class="form-group">
-                        	<img src="{{ url('/thumbnail/') }}/{{ $record->category_banner_image }}" width="100px;" height="100px;"></td>
-                        </div>
-
-                        <div class="form-group">
-                          <textarea name="description" class="form-control" placeholder="Description..." rows='10'>{{ $record->category_description_en }}</textarea>
-                        </div>
-                      </div>
-                      <div id="compose-area"></div>
+						
+						<div class="form-group">
+							<label for="inputState">Category</label>
+							<select id="inputState" name="category_id" class="form-control">
+								@foreach($categories as $id => $category)
+									
+									@if(isset($record->category))
+											
+										@foreach($record->category as $cat)
+											
+												<option value="{{ $id }}" <?php if($cat->id == $id){ echo "selected"; } ?> >{{ $category }}</option>
+											
+										@endforeach
+										
+									@endif
+								
+								@endforeach
+							</select>
+						</div>
 
                       <hr>
                       <h3> Seo Section </h3>
