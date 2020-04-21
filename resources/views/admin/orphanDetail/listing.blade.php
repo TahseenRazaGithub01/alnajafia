@@ -22,7 +22,7 @@
                           <tr>
                             <th>Name</th>
                             <th>Image</th>
-                            <th>Description</th>
+                            <th>Status</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -30,7 +30,7 @@
                           <tr>
                             <th>Name</th>
                             <th>Image</th>
-                            <th>Description</th>
+                            <th>Status</th>
                             <th>Action</th>
                           </tr>
                         </tfoot>
@@ -39,7 +39,8 @@
                           <tr>
                             <td>{{ $detail['detail_name_en'] }}</td>
 							<td><img src="{{ url('/thumbnail/') }}/{{ $detail['detail_page_image'] }}" width="60px;" height="60px;"></td>
-                            <td>desc</td>
+                            <?php $status = (isset($detail['page_status']) && $detail['page_status'] == 1 ) ? "Active" : "Inactive" ; ?>
+							<td>{{ $status }}</td>
                             <td><a href="{{ url('admin/basic_care/edit') }}/{{ $detail['id'] }}" title="Edit"><i class="fa fa-eye" aria-hidden="true"></i></a> |
                             	<a href="{{ url('admin/basic_care/delete') }}/{{ $detail['id'] }}" title="Remove" onclick="return confirm('you want to delete?');"><i class="fa fa-trash" aria-hidden="true"></i></a>
                             </td>

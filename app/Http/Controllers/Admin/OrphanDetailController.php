@@ -33,7 +33,7 @@ class OrphanDetailController extends Controller
      */
     public function show(OrphanDetail $orphanDetail)
     {
-        $orphanDetail = OrphanDetail::select('id','detail_name_en','detail_page_image')->get()->toArray();
+        $orphanDetail = OrphanDetail::select('id','detail_name_en','detail_page_image','page_status')->get()->toArray();
         return view('admin.orphanDetail.listing', compact('orphanDetail'));
     }
 
