@@ -190,12 +190,11 @@
                     </span>
                   </a>
                   <ul class="dropdown-menu">
+
                     <li>
-                      <a href="{{ route('admin.basic_care') }}">Basic Care</a>
+                      <a href="{{ route('admin.basic_care') }}">Orphan Pages</a>
                     </li>
-                    <li>
-                      <a href="javascript:void(0);">Dar al Zehra</a>
-                    </li>
+                    
                   </ul>
                 </li>
               </ul>

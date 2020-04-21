@@ -25,6 +25,8 @@ class OrphanDetailRequest extends FormRequest
     {
         return [
             'detail_name_en'        => 'required',
+            'page_image'            => 'image|required|mimes:jpeg,png,jpg,gif,svg',
+            'banner_image'          => 'image|required|mimes:jpeg,png,jpg,gif,svg',
         ];
     }
 }

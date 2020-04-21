@@ -16,7 +16,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="bgc-white bd bdrs-3 p-20 mB-20">
-                    <h4 class="c-grey-900 mB-20">Orphan Detail Table</h4>
+                    <h4 class="c-grey-900 mB-20">Orphan Pages Table</h4>
                     <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                           <tr>
@@ -37,11 +37,11 @@
                         <tbody>
                         @foreach($orphanDetail as $detail)
                           <tr>
-                            <td>{{ $detail->detail_name_en }}</td>
-                            <td>Pic</td>
+                            <td>{{ $detail['detail_name_en'] }}</td>
+							<td><img src="{{ url('/thumbnail/') }}/{{ $detail['detail_page_image'] }}" width="60px;" height="60px;"></td>
                             <td>desc</td>
-                            <td><a href="{{ url('admin/basic_care/edit') }}/{{ $detail->id }}" title="Edit"><i class="fa fa-eye" aria-hidden="true"></i></a> |
-                            	<a href="{{ url('admin/basic_care/delete') }}/{{ $detail->id }}" title="Remove" onclick="return confirm('you want to delete?');"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            <td><a href="{{ url('admin/basic_care/edit') }}/{{ $detail['id'] }}" title="Edit"><i class="fa fa-eye" aria-hidden="true"></i></a> |
+                            	<a href="{{ url('admin/basic_care/delete') }}/{{ $detail['id'] }}" title="Remove" onclick="return confirm('you want to delete?');"><i class="fa fa-trash" aria-hidden="true"></i></a>
                             </td>
                           </tr>
                         @endforeach
