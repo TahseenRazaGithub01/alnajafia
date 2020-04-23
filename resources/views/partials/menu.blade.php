@@ -13,7 +13,7 @@
                       </div>
                     </div>
                     <div class="peer peer-greed">
-                      <h5 class="lh-1 mB-0 logo-text">Adminator</h5>
+                      <h5 class="lh-1 mB-0 logo-text">Najafia</h5>
                     </div>
                   </div>
                 </a>
@@ -194,11 +194,47 @@
                     <li>
                       <a href="{{ route('admin.basic_care') }}">Orphan Pages</a>
                     </li>
-                    
+
                   </ul>
                 </li>
               </ul>
             </li>
+
+            <li class="nav-item dropdown">
+              <a class="dropdown-toggle" href="javascript:void(0);">
+                <span class="icon-holder">
+                  <i class="c-teal-500 ti-view-list-alt"></i>
+                </span>
+                <span class="title">Islamic Payment</span>
+                <span class="arrow">
+                  <i class="ti-angle-right"></i>
+                </span>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="nav-item dropdown">
+                  <a href="{{ route('admin.islamic_category') }}">
+                    <span>Category</span>
+                  </a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a href="javascript:void(0);">
+                    <span>Menu</span>
+                    <span class="arrow">
+                      <i class="ti-angle-right"></i>
+                    </span>
+                  </a>
+                  <ul class="dropdown-menu">
+
+                    <li>
+                      <a href="{{ route('admin.islamic_detail') }}">Islamic Pages</a>
+                    </li>
+
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+
           </ul>
         </div>
       </div>

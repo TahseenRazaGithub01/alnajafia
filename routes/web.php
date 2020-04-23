@@ -50,6 +50,22 @@ Route::get('admin/basic_care/delete/{id}', 'Admin\OrphanDetailController@destroy
 Route::get('admin/basic_care/edit/{id}', 'Admin\OrphanDetailController@edit')->name('admin.basic_care.edit')->middleware('is_admin');
 Route::post('admin/basic_care/update', 'Admin\OrphanDetailController@update')->name('admin.basic_care.update')->middleware('is_admin');
 
+/*************************** Islamic Category ***************************/
+Route::get('admin/islamic_category', 'Admin\IslamicCategoryController@index')->name('admin.islamic_category')->middleware('is_admin');
+Route::post('admin/islamic_category/store', 'Admin\IslamicCategoryController@store')->name('admin.islamic_category.store')->middleware('is_admin');
+Route::get('admin/islamic_category/listing', 'Admin\IslamicCategoryController@show')->name('admin.islamic_category.listing')->middleware('is_admin');
+Route::get('admin/islamic_category/delete/{id}', 'Admin\IslamicCategoryController@destroy')->name('admin.islamic_category.destroy')->middleware('is_admin');
+Route::get('admin/islamic_category/edit/{id}', 'Admin\IslamicCategoryController@edit')->name('admin.islamic_category.edit')->middleware('is_admin');
+Route::post('admin/islamic_category/update', 'Admin\IslamicCategoryController@update')->name('admin.islamic_category.update')->middleware('is_admin');
+
+/*************************** Islamic Detail ***************************/
+Route::get('admin/islamic_detail', 'Admin\IslamicDetailController@index')->name('admin.islamic_detail')->middleware('is_admin');
+Route::post('admin/islamic_detail/store', 'Admin\IslamicDetailController@store')->name('admin.islamic_detail.store')->middleware('is_admin');
+Route::get('admin/islamic_detail/listing', 'Admin\IslamicDetailController@show')->name('admin.islamic_detail.listing')->middleware('is_admin');
+Route::get('admin/islamic_detail/delete/{id}', 'Admin\IslamicDetailController@destroy')->name('admin.islamic_detail.destroy')->middleware('is_admin');
+Route::get('admin/islamic_detail/edit/{id}', 'Admin\IslamicDetailController@edit')->name('admin.islamic_detail.edit')->middleware('is_admin');
+Route::post('admin/islamic_detail/update', 'Admin\IslamicDetailController@update')->name('admin.islamic_detail.update')->middleware('is_admin');
+
 /*************************** Orphan Student ***************************/
 Route::get('admin/orphan/student', 'Admin\OrphanStudentController@index')->name('admin.orphan.student')->middleware('is_admin');
 Route::post('admin/orphan/student/store', 'Admin\OrphanStudentController@store')->name('admin.orphan.student.store')->middleware('is_admin');
