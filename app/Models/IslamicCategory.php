@@ -16,4 +16,9 @@ class IslamicCategory extends Model
 		'meta_description',
         'category_status'
     ];
+
+    public function detail()
+    {
+        return $this->belongsToMany(IslamicDetail::class);
+    }
 }

@@ -131,7 +131,9 @@ class IslamicDetailController extends Controller
 
         );
 
-        IslamicDetail::create(array_merge($request->all(), $merge_data ));
+        $islamicDetail = IslamicDetail::create(array_merge($request->all(), $merge_data ));
+
+        $islamicDetail->category()->attach($request->input('category_id'));
 
         return back()->with('success', 'Record has been added successfully.');
 
@@ -159,8 +161,10 @@ class IslamicDetailController extends Controller
     {
         $record = $islamicDetail::whereId($id)->first();
 
+        $categories = IslamicCategory::all()->pluck('category_name_en', 'id');
+
         if($record != false){
-            return view('admin.islamicDetail.edit', compact('record'));
+            return view('admin.islamicDetail.edit', compact('record', 'categories'));
         }else{
             abort(404);
         }
@@ -280,7 +284,7 @@ class IslamicDetailController extends Controller
 
         $islamicDetail->update(array_merge($request->all(), $merge_data) );
 
-        //$islamicDetail->category()->sync($request->input('category_id'));
+        $islamicDetail->category()->sync($request->input('category_id'));
 
         return redirect(route('admin.islamic_detail.listing'))->with('success', 'Record has been updated successfully.');
 
@@ -296,7 +300,7 @@ class IslamicDetailController extends Controller
     {
         $detail = IslamicDetail::findOrFail(request()->id);
 
-        // $detail->category()->detach();
+        $detail->category()->detach();
         $detail->delete();
         return back()->with('success', 'Record has been deleted successfully.');
     }

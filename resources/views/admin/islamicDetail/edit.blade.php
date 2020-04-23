@@ -137,7 +137,19 @@ input:checked + .slider:before {
 							<label for="inputState">Category</label>
 							<select id="inputState" name="category_id" class="form-control">
 								
-								<option value="1">Category Name</option>
+								@foreach($categories as $id => $category)
+									
+									@if(isset($record->category))
+											
+										@foreach($record->category as $cat)
+											
+												<option value="{{ $id }}" <?php if($cat->id == $id){ echo "selected"; } ?> >{{ $category }}</option>
+											
+										@endforeach
+										
+									@endif
+								
+								@endforeach
 								
 							</select>
 						</div>

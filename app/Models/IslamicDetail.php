@@ -36,4 +36,10 @@ class IslamicDetail extends Model
 		'meta_description',
         'page_status'
     ];
+
+    public function category()
+    {
+        return $this->belongsToMany(IslamicCategory::class);
+    }
+
 }
