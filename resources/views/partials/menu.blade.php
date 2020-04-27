@@ -226,7 +226,7 @@
                   <ul class="dropdown-menu">
 
                     <li>
-                      <a href="{{ route('admin.islamic_detail') }}">Islamic Pages</a>
+                      <a href="{{ route('admin.islamic_page') }}">Islamic Pages</a>
                     </li>
 
                   </ul>
