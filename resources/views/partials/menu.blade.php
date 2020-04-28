@@ -226,12 +226,24 @@
                   <ul class="dropdown-menu">
 
                     <li>
+                      <a href="{{ route('admin.islamic_detail') }}">Islamic Detail Pages</a>
+                    </li>
+                    <li>
                       <a href="{{ route('admin.islamic_page') }}">Islamic Pages</a>
                     </li>
 
                   </ul>
                 </li>
               </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="sidebar-link" href="{{ route('admin.sadaqah') }}">
+                <span class="icon-holder">
+                    <i class="c-pink-500 ti-palette"></i>
+                  </span>
+                <span class="title">Sadaqah</span>
+              </a>
             </li>
 
 

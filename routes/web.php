@@ -73,6 +73,14 @@ Route::get('admin/islamic_page/listing', 'Admin\IslamicPageController@show')->na
 Route::get('admin/islamic_page/edit/{id}', 'Admin\IslamicPageController@edit')->name('admin.islamic_page.edit')->middleware('is_admin');
 Route::post('admin/islamic_page/update', 'Admin\IslamicPageController@update')->name('admin.islamic_page.update')->middleware('is_admin');
 
+/*************************** Sadaqah Pages ***************************/
+Route::get('admin/sadaqah', 'Admin\SadaqahController@index')->name('admin.sadaqah')->middleware('is_admin');
+Route::post('admin/sadaqah/store', 'Admin\SadaqahController@store')->name('admin.sadaqah.store')->middleware('is_admin');
+Route::get('admin/sadaqah/listing', 'Admin\SadaqahController@show')->name('admin.sadaqah.listing')->middleware('is_admin');
+Route::get('admin/sadaqah/delete/{id}', 'Admin\SadaqahController@destroy')->name('admin.sadaqah.destroy')->middleware('is_admin');
+Route::get('admin/sadaqah/edit/{id}', 'Admin\SadaqahController@edit')->name('admin.sadaqah.edit')->middleware('is_admin');
+Route::post('admin/sadaqah/update', 'Admin\SadaqahController@update')->name('admin.sadaqah.update')->middleware('is_admin');
+
 /*************************** Orphan Student ***************************/
 Route::get('admin/orphan/student', 'Admin\OrphanStudentController@index')->name('admin.orphan.student')->middleware('is_admin');
 Route::post('admin/orphan/student/store', 'Admin\OrphanStudentController@store')->name('admin.orphan.student.store')->middleware('is_admin');
